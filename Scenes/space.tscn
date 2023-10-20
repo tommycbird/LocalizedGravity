@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfigq7jyadbcn"]
+
+[ext_resource type="PackedScene" uid="uid://nn2rfvn8wjir" path="res://Scenes/planet.tscn" id="1_b4fq2"]
+[ext_resource type="Sky" uid="uid://600i481wry1i" path="res://spacebox.tres" id="1_gt6kq"]
+[ext_resource type="PackedScene" uid="uid://cwqc2633chrtj" path="res://Scenes/player.tscn" id="2_pxrdv"]
+
+[sub_resource type="Environment" id="Environment_3aixh"]
+background_mode = 2
+sky = ExtResource("1_gt6kq")
+sky_custom_fov = 80.0
+sky_rotation = Vector3(3.48787e-16, 3.48787e-16, 3.48787e-16)
+ambient_light_source = 2
+ambient_light_color = Color(0.352941, 0.352941, 0.352941, 1)
+ambient_light_energy = 0.5
+tonemap_exposure = 0.55
+
+[node name="Space" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3aixh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.884725, -0.0666856, -0.461318, -0.0153919, 0.984993, -0.171904, 0.465859, 0.159189, 0.870422, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Planet" parent="." instance=ExtResource("1_b4fq2")]
+
+[node name="Player" parent="." instance=ExtResource("2_pxrdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.97372, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.682407, 0, 0.730973, 0, 1, 0, -0.730973, 0, 0.682407, 17.2805, 12.6115, 15.3762)
